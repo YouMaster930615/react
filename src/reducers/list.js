@@ -1,6 +1,21 @@
 
 const listData = {
-  orderList: [],
+  orderList: [
+    {
+      key: '1001',
+      userName: '徐凤年',
+      arms: '绣冬',
+      userArea: '北凉',
+      sentences: 'XXXXX'
+    },
+    {
+      key: '1002',
+      userName: '李淳罡',
+      arms: '木马牛',
+      userArea: '西楚',
+      sentences: '两袖青蛇'
+    },
+  ],
   materialLists: [],
   totalNumber: 1
 }
@@ -11,18 +26,7 @@ const handleOrderList = (state = listData, action) => {
       console.log('获取订单列表')
       return {
         ...state,
-        orderList: [
-          {
-            orderId: 12318094789123,
-            orderType: '1',
-            orderName: '午餐'
-          },
-          {
-            orderId: 42389467289654,
-            orderType: '2',
-            orderName: '晚餐'
-          }
-        ]
+        orderList: []
       };
     case 'GET_MATERAIL':
       return {
@@ -43,12 +47,12 @@ const handleOrderList = (state = listData, action) => {
     case 'INCREATE_NUMBER':
       return {
         ...state,
-        totalNumber: state.totalNumber * 3
+        totalNumber: action.payload.acount
       }
-    case 'DECREATE_NUMBER':
+    case 'DECREATE_NUMBER_ACTION':
       return {
         ...state,
-        totalNumber: state.totalNumber - 3
+        totalNumber: state.totalNumber - action.payload.acount
       }
     default:
       return listData
