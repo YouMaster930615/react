@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Home from './component/Home';
-
+import OrderList from './component/OrderList'
 
 class App extends React.Component{
   constructor(props){
@@ -9,8 +9,16 @@ class App extends React.Component{
     this.state = {}
   }
 
+  onUnload(event) { 
+    alert('页面刷新')
+  }
+
   componentDidMount() {
-    // console.log('GGGGGG', this.props);
+    console.log('GGGGGG', this.props);
+  }
+
+  componentWillUnmount() {
+    alert('xiezai')
   }
 
   render() {
@@ -19,6 +27,7 @@ class App extends React.Component{
         <Home
           name="111"
         />
+        <OrderList />
       </React.Fragment>
     )
   }

@@ -2,23 +2,25 @@ import React from 'react';
 import '../style/orderList.css';
 import {
   Table,
+  Button
 } from 'antd';
-
 import {
   EditOutlined,
   DeleteOutlined
 } from '@ant-design/icons';
+// hooks
+import useOrderHooks from '../hooks/orderHooks'
 
 import {connect} from 'react-redux';
 
 
-import orderHooks from '../hooks/orderHooks'
 
-const OrderList = ({props}) => {
+const OrderList = () => {
   const {
-    orderList,
-  } = orderHooks;
-  console.log('???', props);
+    list,
+    loading,
+    getOrder
+  } = useOrderHooks();
   const orderColums = [
     {
       title: '姓名',
@@ -51,14 +53,21 @@ const OrderList = ({props}) => {
       )
     },
   ]
+
   return (
     <React.Fragment>
+      <Button type="primary" onClick={getOrder}>
+        获取数据
+      </Button>
       <Table
         columns={orderColums}
-        dataSource={orderList}
+        dataSource={list}
+        loading={loading}
         size="middle" 
       />
     </React.Fragment>
   )
 }
+
+
 export default connect()(OrderList);

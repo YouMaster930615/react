@@ -1,32 +1,17 @@
 
 const listData = {
-  orderList: [
-    {
-      key: '1001',
-      userName: '徐凤年',
-      arms: '绣冬',
-      userArea: '北凉',
-      sentences: 'XXXXX'
-    },
-    {
-      key: '1002',
-      userName: '李淳罡',
-      arms: '木马牛',
-      userArea: '西楚',
-      sentences: '两袖青蛇'
-    },
-  ],
+  orderList: [],
   materialLists: [],
   totalNumber: 1
 }
 
 const handleOrderList = (state = listData, action) => {
   switch(action.type) {
-    case 'GET_ORDERLIST':
-      console.log('获取订单列表')
+    case 'GET_ORDERLISTNEW':
+      console.log('获取订单列表参数---', action.payload)
       return {
         ...state,
-        orderList: []
+        orderList: action.payload
       };
     case 'GET_MATERAIL':
       return {

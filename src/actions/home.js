@@ -1,5 +1,6 @@
 
 const getOrderList = () => {
+  console.log('action')
   return ({
     type: 'GET_ORDERLIST',
   })
